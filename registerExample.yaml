@@ -1,6 +1,9 @@
 ---
 - hosts: localhost
-tasks:
-- name: Good Task
-command: date
-register: command_output
+  tasks:
+          - name: Good Task
+            command: date
+            register: command_output
+          - name: Print output
+            debug:
+                    msg: "{{command_output}}"
