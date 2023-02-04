@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+tasks:
+- name: Good Task
+command: date
+register: command_output
