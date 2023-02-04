@@ -1,0 +1,13 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: check location of tree command
+    command: "which tree"
+    register: which_output
+    failed_when: which_output.rc not in [0,1]
+  - name: install tree
+    apt:
+        name: tree
+        state: present
+    when: which_output.rc in [0,1]
